@@ -1,0 +1,28 @@
+application: distinguish-companies
+
+spring:
+  #数据库配置(暂时用h2内置数据库)
+  datasource:
+    #http://localhost:8080/distinguish-companies/h2-console 登录内置h2数据库
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:dc
+    username: root
+    password: root
+  #程序启动初始化数据库操作
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:database/schema.sql
+      data-locations: classpath:database/data.sql
+
+  #热部署
+  devtools:
+    restart:
+      enabled: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /distinguish-companies
+
+

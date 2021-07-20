@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+</head>
+<body>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script>
+    function query(){
+        $.ajax({
+            url:'/distinguish-companies/company/companies',
+            type:"get",
+            success:function (data){
+                if(data){
+                    if(data.length > 0){
+                        for(var i=0;i<data.length; i++){
+                            $("#companies-show").append("<p>公司："+data[i].name);
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+</script>
+
+<button id="query" onclick="query();">查询</button>
+<div id="companies-show"></div>
+
+</body>
+</html>
